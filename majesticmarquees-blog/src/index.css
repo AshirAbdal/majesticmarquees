@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-[#f5f1e8] text-forest-800 font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5 {
+    @apply font-display text-forest-800 tracking-tight;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+  .hero-blog h1,
+  .hero-blog h2,
+  .hero-blog h3 {
+    color: #ffffff !important;
+  }
+  .hero-blog,
+  .hero-blog p,
+  .hero-blog span,
+  .hero-blog a {
+    color: #ffffff;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-2 text-sm font-medium tracking-wider uppercase transition-colors;
+  }
+  .btn-primary {
+    @apply btn bg-tan-500 text-white hover:bg-tan-600 rounded-sm py-3.5;
+  }
+  .btn-outline {
+    @apply btn border border-forest-700 text-forest-800 hover:bg-forest-700 hover:text-cream-50;
+  }
+  .section {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+  .eyebrow {
+    @apply font-display italic text-lg text-forest-700;
+  }
+  .prose-blog {
+    @apply max-w-prose text-forest-800/90 leading-relaxed;
+  }
+  .prose-blog p { @apply my-5; }
+  .prose-blog h2 { @apply font-display text-3xl mt-12 mb-4 text-forest-800; }
+  .prose-blog h3 { @apply font-display text-2xl mt-10 mb-3 text-forest-800; }
+  .prose-blog ul { @apply list-disc pl-6 my-5 space-y-2; }
+  .prose-blog a { @apply text-tan-500 underline underline-offset-2 hover:text-tan-600; }
+  .prose-blog blockquote {
+    @apply border-l-2 border-tan-500 pl-5 italic font-display text-xl text-forest-700 my-8;
+  }
+}
