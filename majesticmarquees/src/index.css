@@ -42,4 +42,12 @@
   .input {
     @apply w-full bg-white border border-cream-200 px-4 py-3 text-forest-800 placeholder-forest-500/50 focus:outline-none focus:border-tan-500;
   }
+  /* PageHero: force white text over dark hero image */
+  .page-hero-text,
+  .page-hero h1,
+  .page-hero h2,
+  .page-hero h3,
+  .page-hero p {
+    color: #ffffff !important;
+  }
 }
