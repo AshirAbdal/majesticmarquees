@@ -1,14 +1,32 @@
-import { Link, NavLink } from 'react-router-dom';
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { site } from '../config/site';
+
+function NavItem({ href, label, end }: { href: string; label: string; end?: boolean }) {
+  const pathname = usePathname();
+  const isActive = end ? pathname === href : pathname?.startsWith(href) ?? false;
+  return (
+    <Link
+      href={href}
+      className={`text-sm uppercase tracking-wider transition-colors ${
+        isActive ? 'text-tan-500' : 'text-forest-800 hover:text-tan-500'
+      }`}
+    >
+      {label}
+    </Link>
+  );
+}
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [mobileSub, setMobileSub] = useState<string | null>(null);
+  const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-40 bg-[#F5F1E8]/95 backdrop-blur border-b border-cream-200">
+    <header className="sticky top-0 z-40 bg-[#F5F1E8]/95 backdrop-blur border-b border-black">
       <div className="container-x flex items-center justify-between h-28">
-        <Link to="/" className="flex items-center" aria-label="Home">
+        <Link href="/" className="flex items-center" aria-label="Home">
           <img src="/logo.png" alt="Majestic Marquees" className="h-24 w-auto object-contain" />
         </Link>
 
@@ -16,55 +34,43 @@ export default function Header() {
           {site.nav.map((n) => {
             const hasChildren = 'children' in n && Array.isArray(n.children) && n.children.length > 0;
             if (hasChildren) {
+              const isActive = pathname?.startsWith(n.to) ?? false;
               return (
                 <div key={n.to} className="relative group">
-                  <NavLink
-                    to={n.to}
-                    end={n.to === '/'}
-                    className={({ isActive }) =>
-                      `text-sm uppercase tracking-wider transition-colors inline-flex items-center gap-1 ${
-                        isActive ? 'text-tan-500' : 'text-forest-800 hover:text-tan-500'
-                      }`
-                    }
+                  <Link
+                    href={n.to}
+                    className={`text-sm uppercase tracking-wider transition-colors inline-flex items-center gap-1 ${
+                      isActive ? 'text-tan-500' : 'text-forest-800 hover:text-tan-500'
+                    }`}
                   >
                     {n.label}
                     <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true" className="opacity-70">
                       <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" />
                     </svg>
-                  </NavLink>
+                  </Link>
                   <div className="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
                     <div className="bg-cream-50 border border-cream-200 min-w-[260px] py-2 shadow-lg">
-                      {n.children!.map((c) => (
-                        <NavLink
-                          key={c.to}
-                          to={c.to}
-                          className={({ isActive }) =>
-                            `block px-5 py-3 text-sm tracking-wider transition-colors ${
-                              isActive ? 'text-tan-500' : 'text-forest-800 hover:text-tan-500'
-                            }`
-                          }
-                        >
-                          {c.label}
-                        </NavLink>
-                      ))}
+                      {n.children!.map((c) => {
+                        const childActive = pathname === c.to;
+                        return (
+                          <Link
+                            key={c.to}
+                            href={c.to}
+                            className={`block px-5 py-3 text-sm tracking-wider transition-colors ${
+                              childActive ? 'text-tan-500' : 'text-forest-800 hover:text-tan-500'
+                            }`}
+                          >
+                            {c.label}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
               );
             }
             return (
-              <NavLink
-                key={n.to}
-                to={n.to}
-                end={n.to === '/'}
-                className={({ isActive }) =>
-                  `text-sm uppercase tracking-wider transition-colors ${
-                    isActive ? 'text-tan-500' : 'text-forest-800 hover:text-tan-500'
-                  }`
-                }
-              >
-                {n.label}
-              </NavLink>
+              <NavItem key={n.to} href={n.to} label={n.label} end={n.to === '/'} />
             );
           })}
           <a
@@ -73,7 +79,7 @@ export default function Header() {
           >
             Blog
           </a>
-          <Link to="/contact-get-a-quote#contact-form" className="btn-primary">
+          <Link href="/contact-get-a-quote#contact-form" className="btn-primary">
             Inquire Today
           </Link>
         </nav>
@@ -100,14 +106,13 @@ export default function Header() {
                 return (
                   <div key={n.to} className="flex flex-col">
                     <div className="flex items-center justify-between">
-                      <NavLink
-                        to={n.to}
-                        end={n.to === '/'}
+                      <Link
+                        href={n.to}
                         onClick={() => setOpen(false)}
                         className="text-sm uppercase tracking-wider text-forest-800 py-2"
                       >
                         {n.label}
-                      </NavLink>
+                      </Link>
                       <button
                         type="button"
                         onClick={() => setMobileSub(isOpen ? null : n.to)}
@@ -122,14 +127,14 @@ export default function Header() {
                     {isOpen && (
                       <div className="pl-4 flex flex-col gap-2 pb-2">
                         {n.children!.map((c) => (
-                          <NavLink
+                          <Link
                             key={c.to}
-                            to={c.to}
+                            href={c.to}
                             onClick={() => setOpen(false)}
                             className="text-sm tracking-wider text-forest-700 py-1"
                           >
                             {c.label}
-                          </NavLink>
+                          </Link>
                         ))}
                       </div>
                     )}
@@ -137,22 +142,21 @@ export default function Header() {
                 );
               }
               return (
-                <NavLink
+                <Link
                   key={n.to}
-                  to={n.to}
-                  end={n.to === '/'}
+                  href={n.to}
                   onClick={() => setOpen(false)}
                   className="text-sm uppercase tracking-wider text-forest-800 py-2"
                 >
                   {n.label}
-                </NavLink>
+                </Link>
               );
             })}
             <a href={site.blogUrl} className="text-sm uppercase tracking-wider text-forest-800 py-2">
               Blog
             </a>
             <Link
-              to="/contact-get-a-quote#contact-form"
+              href="/contact-get-a-quote#contact-form"
               onClick={() => setOpen(false)}
               className="btn-primary w-fit mt-2"
             >

@@ -1,10 +1,4 @@
-import { Helmet } from 'react-helmet-async';
-
-export default function SEO({ title, description }: { title: string; description?: string }) {
-  return (
-    <Helmet>
-      <title>{title} — Majestic Marquees &amp; Tents</title>
-      {description && <meta name="description" content={description} />}
-    </Helmet>
-  );
+// SEO metadata is handled via Next.js generateMetadata in each route
+export default function SEO(_: { title?: string; description?: string }) {
+  return null;
 }

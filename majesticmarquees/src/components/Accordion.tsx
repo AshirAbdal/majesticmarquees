@@ -1,3 +1,4 @@
+'use client';
 import { useState, ReactNode } from 'react';
 
 type Item = { q: string; a: ReactNode };

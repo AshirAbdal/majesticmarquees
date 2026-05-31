@@ -1,14 +1,11 @@
-import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
-export default function Layout() {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex flex-col">
       <Header />
-      <main>
-        <Outlet />
-      </main>
+      <main>{children}</main>
       <Footer />
     </div>
   );

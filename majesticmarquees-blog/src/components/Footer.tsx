@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { site } from '../config/site';
 
 const linkCls =
@@ -32,7 +32,7 @@ export default function Footer() {
           <ul className="space-y-4">
             <li><a href={`${site.mainSiteUrl}/about`} className={linkCls}>About</a></li>
             <li><a href={`${site.mainSiteUrl}/faq`} className={linkCls}>FAQ</a></li>
-            <li><Link to="/" className={linkCls}>Blog</Link></li>
+            <li><Link href="/" className={linkCls}>Blog</Link></li>
           </ul>
           <p className="mt-8 uppercase tracking-[0.15em] text-sm text-forest-800/90">
             Speak With Us

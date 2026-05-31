@@ -1,5 +1,7 @@
+'use client';
+
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { site } from '../config/site';
 
 export default function Header() {
@@ -22,7 +24,7 @@ export default function Header() {
             </a>
           ))}
           <Link
-            to="/"
+            href="/"
             className="text-sm uppercase tracking-wider text-tan-500"
           >
             Blog
@@ -61,7 +63,7 @@ export default function Header() {
               </a>
             ))}
             <Link
-              to="/"
+              href="/"
               onClick={() => setOpen(false)}
               className="text-sm uppercase tracking-wider text-tan-500 py-2"
             >

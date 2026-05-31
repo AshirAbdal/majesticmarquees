@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-[#f5f1e8] text-forest-800 font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5 {
+    @apply font-display text-forest-800 tracking-tight;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-2 text-sm font-medium tracking-wider uppercase transition-colors;
+  }
+  .btn-primary {
+    @apply btn bg-tan-500 text-white hover:bg-tan-600 rounded-sm py-3.5;
+  }
+  .btn-outline {
+    @apply btn border border-forest-700 text-forest-800 hover:bg-forest-700 hover:text-cream-50;
+  }
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+  .eyebrow {
+    @apply text-xs uppercase tracking-[0.2em] text-tan-500 font-sans;
+  }
+  .placeholder-img {
+    @apply bg-[#d7c8a5];
+  }
+}

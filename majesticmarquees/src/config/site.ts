@@ -1,4 +1,4 @@
-const BLOG = (import.meta.env.VITE_BLOG_URL as string | undefined) || 'https://blog.majesticmarquees.com/';
+const BLOG = (process.env.NEXT_PUBLIC_BLOG_URL) || 'https://blog.majesticmarquees.clickdigim.com/';
 
 export const site = {
   name: 'Majestic Marquees & Tents',

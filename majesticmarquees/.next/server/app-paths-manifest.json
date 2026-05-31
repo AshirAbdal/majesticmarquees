@@ -1,0 +1,15 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/faq/page": "app/faq/page.js",
+  "/contact-get-a-quote/page": "app/contact-get-a-quote/page.js",
+  "/about/page": "app/about/page.js",
+  "/cookie-policy/page": "app/cookie-policy/page.js",
+  "/our-tents/custom-bespoke/page": "app/our-tents/custom-bespoke/page.js",
+  "/our-tents/sailcloth-silhouette/page": "app/our-tents/sailcloth-silhouette/page.js",
+  "/our-tents/stretch-nomadic-bedouin/page": "app/our-tents/stretch-nomadic-bedouin/page.js",
+  "/terms-conditions/page": "app/terms-conditions/page.js",
+  "/our-tents/page": "app/our-tents/page.js",
+  "/gallery/page": "app/gallery/page.js",
+  "/page": "app/page.js",
+  "/privacy-policy-2/page": "app/privacy-policy-2/page.js"
+}

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { site } from '../config/site';
 
 const linkCls =
@@ -21,17 +21,17 @@ export default function Footer() {
         {/* Column 2 */}
         <div>
           <ul className="space-y-4">
-            <li><Link to="/our-tents" className={linkCls}>Our Tents</Link></li>
-            <li><Link to="/gallery" className={linkCls}>Gallery</Link></li>
-            <li><Link to="/contact-get-a-quote" className={linkCls}>Contact / Get a Quote</Link></li>
+            <li><Link href="/our-tents" className={linkCls}>Our Tents</Link></li>
+            <li><Link href="/gallery" className={linkCls}>Gallery</Link></li>
+            <li><Link href="/contact-get-a-quote" className={linkCls}>Contact / Get a Quote</Link></li>
           </ul>
         </div>
 
         {/* Column 3 */}
         <div>
           <ul className="space-y-4">
-            <li><Link to="/about" className={linkCls}>About</Link></li>
-            <li><Link to="/faq" className={linkCls}>FAQ</Link></li>
+            <li><Link href="/about" className={linkCls}>About</Link></li>
+            <li><Link href="/faq" className={linkCls}>FAQ</Link></li>
             <li><a href={site.blogUrl} className={linkCls}>Blog</a></li>
           </ul>
           <p className="mt-8 uppercase tracking-[0.15em] text-sm text-forest-800/90">
@@ -48,9 +48,9 @@ export default function Footer() {
         {/* Column 4 */}
         <div>
           <ul className="space-y-4">
-            <li><Link to="/terms-conditions" className={linkCls}>Terms and Condition</Link></li>
-            <li><Link to="/privacy-policy-2" className={linkCls}>Privacy Policy</Link></li>
-            <li><Link to="/cookie-policy" className={linkCls}>Cookie Policy</Link></li>
+            <li><Link href="/terms-conditions" className={linkCls}>Terms and Condition</Link></li>
+            <li><Link href="/privacy-policy-2" className={linkCls}>Privacy Policy</Link></li>
+            <li><Link href="/cookie-policy" className={linkCls}>Cookie Policy</Link></li>
           </ul>
         </div>
       </div>

@@ -1,4 +1,4 @@
-const MAIN = (import.meta.env.VITE_MAIN_SITE_URL as string | undefined)?.replace(/\/$/, '') || 'https://majesticmarquees.com';
+const MAIN = (process.env.NEXT_PUBLIC_MAIN_SITE_URL as string | undefined)?.replace(/\/$/, '') || 'https://majesticmarquees.com';
 
 export const site = {
   name: 'Majestic Marquees & Tents',

@@ -1,3 +1,4 @@
+'use client';
 import Placeholder from './Placeholder';
 
 type Field = { name: string; label: string; type?: string; textarea?: boolean };
